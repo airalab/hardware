@@ -1,12 +1,12 @@
 Base Material: FR-4
 Layers: 2
-Dimension: 70.4 mm* 70.4 mm
+Dimension: 83 mm* 71.9 mm
 PCB Qty: 50
 Product Type: Industrial/Consumer electronics
 
-Different Design: 1
-Delivery Format: Single PCB
-PCB Thickness: 1
+Different Design: 2
+Delivery Format: Panel by Customer
+PCB Thickness: 1.6
 Impedance Control: no
 PCB Color: Blue
 Silkscreen: White
@@ -26,5 +26,5 @@ Paper between PCBs: No
 Appearance Quality: IPC Class 2 Standard
 Confirm Production file: Yes
 Silkscreen Technology: Ink-jet/Screen Printing Silkscreen
-Package Box: With JLCPCB logo
-Board Outline Tolerance: ±0.2mm(Regular)
+X-out board: Accept
+Board Outline Tolerance: ±0.1mm(Precision)

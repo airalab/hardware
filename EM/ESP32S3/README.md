@@ -1,3 +1,8 @@
+Status: tested
+
+tested factory: 
+* JLCPCB
+
 Features:
 
 1. Monitor energy consumption, whether that's an individual estate or an entire building

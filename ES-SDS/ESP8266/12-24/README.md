@@ -1,3 +1,9 @@
+Status: tested
+
+tested factory: 
+* JLCPCB
+* PCCCBway
+
 Features:
 
 1. Ready to install and use sensor kit

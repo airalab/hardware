@@ -1,3 +1,8 @@
+Status: tested
+
+tested factory:
+* JLCPCB
+
 Features:
 
 1. Support of any USB power supply with QC2, QC3 or USB-PD (Power Delivery) specification

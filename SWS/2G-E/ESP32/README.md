@@ -1,3 +1,8 @@
+Status: tested
+
+tested factory: 
+* JLCPCB
+
 WARNING: neutral wire is required!
 
 Hardware specification:
