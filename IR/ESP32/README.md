@@ -1,7 +1,11 @@
 Status: tested
 
-tested factory:
+Rested factory:
 * JLCPCB
+
+Additional parts:
+* LK-AC93 - case by Shenzhen Shiny Enclosure Technology Co., Ltd.
+* 2.4G Built-in Copper Tube Antenna IPEX MHF1 1.13 Cable Omnidirectional 2dBi Gain IPEX Interface
 
 Features:
 
