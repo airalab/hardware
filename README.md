@@ -1,4 +1,4 @@
-## Devise list
+## Devices list
 
 | ID | Description | Order parametrs |
 | ------------- | ------------- | ------------- |
@@ -13,8 +13,8 @@
 ## Project structure
 
 ```
-└── ID/                             # ID devise serias
-    └── SUB_ID/                     # SUB_ID devise (if there) 
+└── ID/                             # ID device serias
+    └── SUB_ID/                     # SUB_ID device (if there) 
     ...
     └── CPU_ID/                     # Microcontroller name
         ...
