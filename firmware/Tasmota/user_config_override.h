@@ -36,6 +36,28 @@
 
   #define PROJECT                "robonomics"
 
+  #ifdef USE_DOMOTICZ
+  #undef USE_DOMOTICZ                           // Disable Domoticz support
+  #endif
+
+  #ifdef USE_KNX_WEB_MENU
+  #undef USE_KNX_WEB_MENU                      // Disable KNX support
+  #endif
+
+  #ifdef MODULE
+  #undef MODULE
+  #endif
+  #define MODULE                 USER_MODULE   // [Module] Select default model (the list is kModuleNiceList() in file tasmota_template.h) USER_MODULE is the TEMPLATE
+
+  #ifdef FALLBACK_MODULE
+  #undef FALLBACK_MODULE
+  #endif
+  #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
+
+  #ifdef USER_TEMPLATE
+  #undef USER_TEMPLATE
+  #endif
+
   #ifdef FIRMWARE_EM-ESP32S3
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
