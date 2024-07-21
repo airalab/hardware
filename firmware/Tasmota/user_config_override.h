@@ -85,6 +85,7 @@
     #define USER_TEMPLATE "{\"NAME\":\"Generic\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}"  // [Template] Set JSON template
 
   #endif
+
   #ifdef FIRMWARE_IR-ESP32
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
@@ -93,6 +94,15 @@
     //    Information page or in INFO MQTT messages
     #undef CODE_IMAGE_STR
     #define CODE_IMAGE_STR "IR-ESP32"
+
+    #undef DEVICE_NAME
+    #define DEVICE_NAME "IR-ESP32"
+    #undef FRIENDLY_NAME
+    #define FRIENDLY_NAME "Robonomics IR remote"
+
+    // -- IR options ----------------------------
+    #define USE_IR_REMOTE                            // Enable IR remote commands using library IRremoteESP8266
+    #define USE_IR_REMOTE_FULL                       // Support all IR protocols from IRremoteESP8266
 
     #undef USER_TEMPLATE
     #define USER_TEMPLATE "{\"NAME\":\"Robonomics IR remote\",\"GPIO\":[1,1,1,1,1056,1088,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0,0,0,0,1,1,1,1,1,0,0,1],\"FLAG\":0,\"BASE\":1}"
@@ -106,11 +116,29 @@
     // -- CODE_IMAGE_STR is the name shown between brackets on the 
     //    Information page or in INFO MQTT messages
     #undef CODE_IMAGE_STR
-    #define CODE_IMAGE_STR "SWS-1G-E-ESP32"
+    #define CODE_IMAGE_STR "IR-ESP32C6"
 
-//    #undef USER_TEMPLATE
-//    #define USER_TEMPLATE "{\"NAME\":\"Generic\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}"  // [Template] Set JSON template
+    #ifdef MODULE
+    #undef MODULE
+    #endif
+    #define MODULE                 USER_MODULE   // [Module] Select default model (the list is kModuleNiceList() in file tasmota_template.h) USER_MODULE is the TEMPLATE
 
+    #ifdef FALLBACK_MODULE
+    #undef FALLBACK_MODULE
+    #endif
+    #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
+
+    #undef DEVICE_NAME
+    #define DEVICE_NAME "IR-ESP32C6"
+    #undef FRIENDLY_NAME
+    #define FRIENDLY_NAME "Robonomics IR remote"
+
+    // -- IR options ----------------------------
+    #define USE_IR_REMOTE                            // Enable IR remote commands using library IRremoteESP8266
+    #define USE_IR_REMOTE_FULL                       // Support all IR protocols from IRremoteESP8266
+
+    #undef USER_TEMPLATE
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics IR remote\",\"GPIO\":[1,1,1,1,1056,1088,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,576,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"  // [Template] Set JSON template
   #endif
 
   #ifdef FIRMWARE_SWS-1G-E-ESP32
