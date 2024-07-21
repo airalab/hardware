@@ -95,6 +95,16 @@
     #undef CODE_IMAGE_STR
     #define CODE_IMAGE_STR "IR-ESP32"
 
+    #ifdef MODULE
+    #undef MODULE
+    #endif
+    #define MODULE                 USER_MODULE   // [Module] Select default model (the list is kModuleNiceList() in file tasmota_template.h) USER_MODULE is the TEMPLATE
+
+    #ifdef FALLBACK_MODULE
+    #undef FALLBACK_MODULE
+    #endif
+    #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
+
     #undef DEVICE_NAME
     #define DEVICE_NAME "IR-ESP32"
     #undef FRIENDLY_NAME
