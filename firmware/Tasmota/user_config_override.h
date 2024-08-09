@@ -179,4 +179,63 @@
 
   #endif
 
+  #ifdef FIRMWARE_SWS-1G-E-ESP32C6
+    // This line will issue a warning during the build (yellow in 
+    // VSCode) so you see which section is used
+    #warning **** Build: SWS-1G-E-ESP32C6 ****
+    // -- CODE_IMAGE_STR is the name shown between brackets on the 
+    //    Information page or in INFO MQTT messages
+    #undef CODE_IMAGE_STR
+    #define CODE_IMAGE_STR "SWS-1G-E-ESP32C6"
+
+    #ifdef MODULE
+    #undef MODULE
+    #endif
+    #define MODULE                 USER_MODULE   // [Module] Select default model (the list is kModuleNiceList() in file tasmota_template.h) USER_MODULE is the TEMPLATE
+
+    #ifdef FALLBACK_MODULE
+    #undef FALLBACK_MODULE
+    #endif
+    #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
+
+    #undef DEVICE_NAME
+    #define DEVICE_NAME "SWS-1G-E-ESP32C6"
+    #undef FRIENDLY_NAME
+    #define FRIENDLY_NAME "Robonomics 1 gang Switch"
+
+
+    #undef USER_TEMPLATE
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-1L-Switch\",\"GPIO\":[32,1,1,1,1,1,1,1,1,1,1,1,576,32,288,1,1,1,7552,1,3200,224,1,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
+
+  #endif
+
+  #ifdef FIRMWARE_SWS-2G-E-ESP32C6
+    // This line will issue a warning during the build (yellow in 
+    // VSCode) so you see which section is used
+    #warning **** Build: SWS-2G-E-ESP32C6 ****
+    // -- CODE_IMAGE_STR is the name shown between brackets on the 
+    //    Information page or in INFO MQTT messages
+    #undef CODE_IMAGE_STR
+    #define CODE_IMAGE_STR "SWS-2G-E-ESP32C6"
+
+    #ifdef MODULE
+    #undef MODULE
+    #endif
+    #define MODULE                 USER_MODULE   // [Module] Select default model (the list is kModuleNiceList() in file tasmota_template.h) USER_MODULE is the TEMPLATE
+
+    #ifdef FALLBACK_MODULE
+    #undef FALLBACK_MODULE
+    #endif
+    #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
+
+    #undef DEVICE_NAME
+    #define DEVICE_NAME "SWS-2G-E-ESP32C6"
+    #undef FRIENDLY_NAME
+    #define FRIENDLY_NAME "Robonomics 2 gang Switch"
+
+    #undef USER_TEMPLATE
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-2L-Switch\",\"GPIO\":[32,32,1,1,1,1,288,1,1,1,1,1,576,1,289,33,1,1,7552,1,3200,224,225,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
+
+  #endif
+
 #endif  // _USER_CONFIG_OVERRIDE_H_
