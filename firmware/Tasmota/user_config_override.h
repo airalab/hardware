@@ -17,6 +17,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
 #ifndef _USER_CONFIG_OVERRIDE_H_
 #define _USER_CONFIG_OVERRIDE_H_
 
@@ -33,8 +34,18 @@
  *   - You still need to update my_user_config.h for major define USE_MQTT_TLS.
  *   - All parameters can be persistent ch	anged online using commands via MQTT, WebConsole or Serial.
 \*****************************************************************************************************/
-
+  #ifdef PROJECT
+  #undef PROJECT
+  #endif
   #define PROJECT                "robonomics"
+
+  #ifdef USE_DISPLAY
+  #undef USE_DISPLAY
+  #endif
+
+  #ifdef _UDISP_
+  #undef _UDISP_
+  #endif
 
   #ifdef USE_DOMOTICZ
   #undef USE_DOMOTICZ                           // Disable Domoticz support
@@ -58,21 +69,41 @@
   #undef USER_TEMPLATE
   #endif
 
-  #ifdef FIRMWARE_EM-ESP32S3
-    // This line will issue a warning during the build (yellow in 
-    // VSCode) so you see which section is used
-    #warning **** Build: EM-ESP32S3 ****
-    // -- CODE_IMAGE_STR is the name shown between brackets on the 
-    //    Information page or in INFO MQTT messages
+  #ifdef FIRMWARE_EM_ESP32S3
+  #warning **** Build: EM-ESP32S3 ****
+    #ifdef CODE_IMAGE_STR
     #undef CODE_IMAGE_STR
+    #endif
     #define CODE_IMAGE_STR "EM-ESP32S3"
+
+    #undef DEVICE_NAME
+    #define DEVICE_NAME "EM-ESP32S3"
+    #undef FRIENDLY_NAME
+    #define FRIENDLY_NAME "Robonomics energy monitor"
+
+      #define BL0940_PREF 600
+      #define BL0940_UREF 14437
+      #define BL0940_IREF 266013
+
+      #define BL09XX_WRITE_COMMAND 0xA8
+      #define BL09XX_READ_COMMAND 0x58
+
+    #ifdef MODULE
+    #undef MODULE
+    #endif
+    #define MODULE                 USER_MODULE   // [Module] Select default model (the list is kModuleNiceList() in file tasmota_template.h) USER_MODULE is the TEMPLATE
+
+    #ifdef FALLBACK_MODULE
+    #undef FALLBACK_MODULE
+    #endif
+    #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
 
     #undef USER_TEMPLATE
     #define USER_TEMPLATE "{\"NAME\":\"Robonomics-Energy-Monitor\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3200,5440,1,1,576,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1, \"CMND\":\"SetOption21 1|WattRes 2|VoltRes 2\"}"
 
   #endif
 
-  #ifdef FIRMWARE_ES-SDS-ESP8266
+  #ifdef FIRMWARE_ES_SDS_ESP8266
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
     #warning **** Build: ES-SDS-ESP8266 ****
@@ -86,7 +117,7 @@
 
   #endif
 
-  #ifdef FIRMWARE_IR-ESP32
+  #ifdef FIRMWARE_IR_ESP32
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
     #warning **** Build: IR-ESP32 ****
@@ -119,7 +150,7 @@
 
   #endif
 
-  #ifdef FIRMWARE_IR-ESP32C6
+  #ifdef FIRMWARE_IR_ESP32C6
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
     #warning **** Build: IR-ESP32C6 ****
@@ -148,10 +179,10 @@
     #define USE_IR_REMOTE_FULL                       // Support all IR protocols from IRremoteESP8266
 
     #undef USER_TEMPLATE
-    #define USER_TEMPLATE "{\"NAME\":\"Robonomics IR remote\",\"GPIO\":[1,1,1,1,1056,1088,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,576,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"  // [Template] Set JSON template
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics IR remote\",\"GPIO\":[1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,544,1,1056,1088,1,0,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
   #endif
 
-  #ifdef FIRMWARE_SWS-1G-E-ESP32
+  #ifdef FIRMWARE_SWS_1G_E_ESP32
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
     #warning **** Build: SWS-1G-E-ESP32 ****
@@ -165,7 +196,7 @@
 
   #endif
 
-  #ifdef FIRMWARE_SWS-2G-E-ESP32
+  #ifdef FIRMWARE_SWS_2G_E_ESP32
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
     #warning **** Build: SWS-2G-E-ESP32 ****
@@ -179,7 +210,7 @@
 
   #endif
 
-  #ifdef FIRMWARE_SWS-1G-E-ESP32C6
+  #ifdef FIRMWARE_SWS_1G_E_ESP32C6
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
     #warning **** Build: SWS-1G-E-ESP32C6 ****
@@ -205,11 +236,11 @@
 
 
     #undef USER_TEMPLATE
-    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-1L-Switch\",\"GPIO\":[32,1,1,1,1,1,1,1,1,1,1,1,576,32,288,1,1,1,7552,1,3200,224,1,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-1L-Switch\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,576,32,288,1,1,1,7552,1,3200,224,1,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
 
   #endif
 
-  #ifdef FIRMWARE_SWS-2G-E-ESP32C6
+  #ifdef FIRMWARE_SWS_2G_E_ESP32C6
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
     #warning **** Build: SWS-2G-E-ESP32C6 ****
@@ -234,7 +265,7 @@
     #define FRIENDLY_NAME "Robonomics 2 gang Switch"
 
     #undef USER_TEMPLATE
-    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-2L-Switch\",\"GPIO\":[32,32,1,1,1,1,288,1,1,1,1,1,576,1,289,33,1,1,7552,1,3200,224,225,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-2L-Switch\",\"GPIO\":[1,32,1,1,1,1,288,1,1,1,1,1,576,1,289,33,1,1,7552,1,3200,224,225,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
 
   #endif
 

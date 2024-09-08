@@ -11,15 +11,15 @@ if [ -d "Tasmota" ]; then
 	echo "Directory Tasmota already installed"
 else
 	echo "Directory does exist. Cloning source from github."
-	git clone https://github.com/arendst/Tasmota.git
+	git clone git@github.com:PavelSheremetev/Tasmota.git
 fi
 
-if patch -R -p1 -s -f --dry-run < patch/xnrg_14_bl09xx.diff; then
-        echo "Tasmota xnrg_14_bl09xx already patched"
-else
-        echo "Patching xnrg_14_bl09xx module"
-	patch -p1 < patch/xnrg_14_bl09xx.diff
-fi
+#if patch -R -p1 -s -f --dry-run < patch/xnrg_14_bl09xx.diff; then
+#        echo "Tasmota xnrg_14_bl09xx already patched"
+#else
+#        echo "Patching xnrg_14_bl09xx module"
+#	patch -p1 < patch/xnrg_14_bl09xx.diff
+#fi
 
 if [ -f Tasmota/tasmota/user_config_override.h ]; then
         echo "File user_config_override.h already exists"
