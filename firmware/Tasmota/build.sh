@@ -11,7 +11,7 @@ if [ -d "Tasmota" ]; then
 	echo "Directory Tasmota already installed"
 else
 	echo "Directory does exist. Cloning source from github."
-	git clone git@github.com:PavelSheremetev/Tasmota.git
+	git clone https://github.com/arendst/Tasmota.git
 fi
 
 #if patch -R -p1 -s -f --dry-run < patch/xnrg_14_bl09xx.diff; then
@@ -37,4 +37,4 @@ else
 #        cp platformio_tasmota_cenv.ini Tasmota/platformio_tasmota_cenv.ini
 fi
 
-pio run -e em-esp32s3 -e es-sds-esp8266 -e ir-esp32 -e ir-esp32c6 -e sws-1g-e-esp32 -e sws-2g-e-esp32 -d ./Tasmota/
+#pio run -e em-esp32s3 -e es-sds-esp8266 -e ir-esp32 -e ir-esp32c6 -e sws-1g-e-esp32 -e sws-2g-e-esp32 -d ./Tasmota/
