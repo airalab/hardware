@@ -622,6 +622,11 @@ disable all
     #define DEVICE_NAME "EM-ESP32S3"
     #undef FRIENDLY_NAME
     #define FRIENDLY_NAME "Robonomics energy monitor"
+    #undef USE_ENHANCED_GUI_WIFI_SCAN
+    #undef USE_TIMERS_WEB
+
+    #define USE_ENERGY_SENSOR
+    #define USE_BL09XX
 
       #define BL0940_PREF 600
       #define BL0940_UREF 14437
@@ -656,8 +661,8 @@ disable all
     #undef FRIENDLY_NAME
     #define FRIENDLY_NAME "Robonomics energy monitor"
 
-#undef USE_ENHANCED_GUI_WIFI_SCAN
-#undef USE_TIMERS_WEB
+    #undef USE_ENHANCED_GUI_WIFI_SCAN
+    #undef USE_TIMERS_WEB
 
     #define USE_ENERGY_SENSOR
     #define USE_BL09XX
