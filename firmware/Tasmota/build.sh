@@ -37,4 +37,13 @@ else
 #        cp platformio_tasmota_cenv.ini Tasmota/platformio_tasmota_cenv.ini
 fi
 
+if [ -d "Tasmota/lib/defaults/esp-robonomics-client" ]; then
+        echo "esp-robonomics-client already installed"
+else
+        echo "esp-robonomics-client not installed, installing it now"
+        git clone https://github.com/LoSk-p/esp-robonomics-client.git Tasmota/lib/default/esp-robonomics-client
+        ln -s ../../lib/default/esp-robonomics-client/examples/Tasmota_driver/xdrv_100_robonomics.ino Tasmota/tasmota/tasmota_xdrv_driver/xdrv_100_robonomics.ino
+fi
+
+
 #pio run -e em-esp32s3 -e es-sds-esp8266 -e ir-esp32 -e ir-esp32c6 -e sws-1g-e-esp32 -e sws-2g-e-esp32 -d ./Tasmota/
