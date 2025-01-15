@@ -27,7 +27,7 @@ The scheme is designed to work with a current transformer. In this project, the 
 
 The ESP32-C6 series of SoCs, a 32-bit RISC-V single-core microprocessor from Espressif Systems, was chosen as the processor. The ESP32-C6-MINI-1-N4 module is used in the scheme. This is a very simple and fast solution for creating custom developments because you do not need to perform additional impedance matching calculations, and during PCB production, you do not need to install additional requirements for production and impedance control. The main advantages of this SoC include its multiprotocol connectivity. It supports 2.4 GHz Wi-Fi 6 (IEEE 802.11b/g/n/ax), Bluetooth 5 (LE), Zigbee 3.0, and Thread 1.3 (802.15.4). On the PCB, the module is placed according to all design recommendations for placement on the PCB.For programming mode, a button labeled “Boot mode” is installed next to the module. To start the microcontroller in “Boot mode,” press the button before connecting the cable to the Type-C port. Another way to enter without disconnecting the cable from Type-C is to press the “Boot mode” button and, while holding it, press the “Reset” button. The microcontroller will reboot and start in firmware loading mode.
 
-<img src="Img/info.png" width="500px"></a>
+<img src="https://github.com/airalab/hardware/blob/main/EM/ESP32C6/Img/info.png" width="500px">
 
 ## Advantages of USB Connection
 

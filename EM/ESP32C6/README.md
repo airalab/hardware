@@ -6,7 +6,7 @@ tested factory:
 **Description**
 	Single-phase energy monitoring
 **Story:**
-	This device was developed by the robotonomics community. The main idea that prompted the creation of this device is the rejection of cloud solutions from manufacturers of IOT devices. 
+	This device was developed by the Robotonomics team. The main idea that prompted the creation of this device is the rejection of cloud solutions from manufacturers of IOT devices. 
 	Join the community and purchase a [device.](https://robonomics.network/devices/)  We will be glad to see anyone who wants to develop the project of this device.
  
 **Features:**
