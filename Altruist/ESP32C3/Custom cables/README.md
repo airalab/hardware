@@ -6,7 +6,7 @@ In the Altruist project, custom cables are used to connect external sensors such
 - **PM Sensor [SDS011](https://github.com/airalab/hardware/blob/main/Altruist/ESP32C3/Custom%20cables/Production%20drawing%20cable%20for%20SDS011.pdf)**
 - **[BME280](https://github.com/airalab/hardware/blob/main/Altruist/ESP32C3/Custom%20cables/Production%20drawing%20cable%20for%20BME280.pdf) Temperature, Humidity, and Pressure Sensor**
 - **Noise Sensor [ICS-43434](https://github.com/airalab/hardware/blob/main/Altruist/ESP32C3/Custom%20cables/Production%20drawing%20cable%20for%20Noize%20Sensor.pdf)**
-- **Radiation Sensor** - Coming soon
+- **Radiation Sensor** - Coming soon ([datasheet](https://github.com/climateguard/RadSens/blob/master/extras/datasheets/RadSens_datasheet_ENG.pdf))
 - **GPS BN220** - Coming soon
 
 ### Ordering Custom Cables
