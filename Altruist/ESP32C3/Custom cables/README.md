@@ -4,7 +4,7 @@
 In the Altruist project, custom cables are used to connect external sensors such as:
 
 - **BME280 Temperature, Humidity, and Pressure Sensor**
-- **Noise Sensor ICS-43434**
+- **Noise Sensor [ICS-43434](https://github.com/airalab/hardware/blob/main/Altruist/ESP32C3/Custom%20cables/Production%20drawing%20cable%20for%20Noize%20Sensor.pdf)**
 - **Radiation Sensor**
 - **PM Sensor SDS011**
 
