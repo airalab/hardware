@@ -1,4 +1,4 @@
-#Altruist Outdoor Sensor
+# Altruist Outdoor Sensor
 
 **Altruist** is a smart sensor that collects environmental data and combines it into a decentralized sensor map.
 
