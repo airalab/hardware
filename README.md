@@ -10,8 +10,8 @@ The Robonomics Hardware team focuses on developing open-source hardware solution
 
 | Device Name | ID (Version) | Project Description | Production Files |
 |-------------|--------------|---------------------|------------------|
-| Energy Monitoring | EM-ESP32C6 | [Description](/EM/ESP32C6/README.md) | [PCB](/EM/ESP32C6/PCB/README.md) |
-| Energy Monitoring | EM-ESP32S3 | [Description](/EM/ESP32S3/README.md) | [PCB](/EM/ESP32S3/PCB/README.md) |
+| [Energy Monitoring](/EM/ESP32C6) | EM-ESP32C6 | [Description](/EM/ESP32C6/README.md) | [PCB](/EM/ESP32C6/PCB/README.md) |
+| [Energy Monitoring](/EM/ESP32S3) | EM-ESP32S3 | [Description](/EM/ESP32S3/README.md) | [PCB](/EM/ESP32S3/PCB/README.md) |
 | [Altruist Outdoor Sensor](/Altruist/README.md) | ESP32C3 | [Description](/Altruist/ESP32C3/README.md) | [PCB](/Altruist/ESP32C3/PCB/README.md) |
 | [Altruist Outdoor Sensor](/Altruist/README.md) | ES-SDS-ESP8266-AC | [Description](/Altruist/ESP8266/AC/README.md) | [PCB](/Altruist/ESP8266/AC/PCB/README.md) |
 | [Altruist Outdoor Sensor](/Altruist/README.md) | ES-SDS-ESP8266-DC | [Description](/Altruist/ESP8266/DC/README.md) | [PCB](/Altruist/ESP8266/DC/PCB/README.md) |
