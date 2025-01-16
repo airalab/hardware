@@ -21,15 +21,17 @@ Experience the power of true DePIN (Decentralized Physical Infrastructure Networ
 - Geiger counter : [Radsens](https://github.com/climateguard/RadSens)
 
 **Advanced Peripheral Interfaces:**
-     Digital interfaces:
-        – Two UART for PM sensors, GPS
-        – I2C for atmospheric pressure, temperature, humidity, geiger counter, CO2, TVOC and other gas sensors
-        – I2S for connecting digital microphones for noise analysis
+
+Digital interfaces:
+* Two UART for PM sensors, GPS
+* I2C for atmospheric pressure, temperature, humidity, geiger counter, CO2, TVOC and other gas sensors
+* I2S for connecting digital microphones for noise analysis
+
 Built-in AC -DC 5V 0.35A power supply
 Built-in connectors :
-- HY2.0-4P : i2c for atmospheric pressure, temperature, humidity.
-- XH-4AW:  i2c for geiger counter
-- ZH-5AW: i2s for digital microphones
-- XH-5P : for SDS011 PM sensor
-- SH1.0-4PWT: UART for GPS
-- Screw Terminal Blocks : for AC connection
+* HY2.0-4P : i2c for atmospheric pressure, temperature, humidity.
+* XH-4AW:  i2c for geiger counter
+* ZH-5AW: i2s for digital microphones
+* XH-5P : for SDS011 PM sensor
+* SH1.0-4PWT: UART for GPS
+* Screw Terminal Blocks : for AC connection
