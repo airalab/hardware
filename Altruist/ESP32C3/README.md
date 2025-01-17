@@ -35,3 +35,9 @@ Built-in connectors :
 * XH-5P : for SDS011 PM sensor
 * SH1.0-4PWT: UART for GPS
 * Screw Terminal Blocks : for AC connection
+
+> [!WARNING]
+> ## **Important**
+>
+> **The power supply circuit is not isolated, so it is forbidden to touch the device when connected to the AC power grid. It is also prohibited to connect the device via the Type-C port to a PC without a special isolating device to avoid damaging the PC and electrical shock.**
+> **Please study the [educational materials](https://resources.altium.com/p/isolated-vs-non-isolated-power-supplies-right-choice-without-fail) on the topic of power sources.**
