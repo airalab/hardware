@@ -11,8 +11,8 @@ The power supply block is built on the [SY50282](https://github.com/airalab/hard
 - The AC voltage passes through a fuse and a 07D471K varistor. If the voltage suddenly exceeds 385 V, the varistor triggers, disconnecting the circuit to prevent damage.
 - The scheme also includes a DC-DC linear converter that reduces the power from 5 V to 3.3 V for connection via USB Type-C and from the AC-DC power supply.
 
-> [!NOTE]
-> ## **Important Warning!**
+> [!WARNING]
+> ## **Important**
 >
 > **The power supply circuit is not isolated, so it is forbidden to touch the device when connected to the AC power grid. It is also prohibited to connect the device via the Type-C port to a PC without a special isolating device to avoid damaging the PC and electrical shock.**
 > **Please study the [educational materials](https://resources.altium.com/p/isolated-vs-non-isolated-power-supplies-right-choice-without-fail) on the topic of power sources.**
