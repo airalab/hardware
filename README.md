@@ -2,7 +2,7 @@
 
 ## Robonomics Hardware Team
 
-The Robonomics Hardware team is involved in developing open-source hardware. Below is a list of devices developed by them.
+The Robonomics Hardware team is involved in developing open-source hardware.
 
 ## Devices Developed by Robonomics Hardware
 
