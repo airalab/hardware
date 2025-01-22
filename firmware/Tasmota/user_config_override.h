@@ -750,6 +750,9 @@ disable all
     #warning **** Build: IR-ESP32C6 ****
     // -- CODE_IMAGE_STR is the name shown between brackets on the 
     //    Information page or in INFO MQTT messages
+    #undef USE_GPIO_VIEWER
+    #undef USE_BERRY
+
     #undef CODE_IMAGE_STR
     #define CODE_IMAGE_STR "IR-ESP32C6"
 
