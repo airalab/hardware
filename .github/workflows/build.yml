@@ -1,0 +1,75 @@
+name: build tasmota firmware
+on: push
+    paths: 
+       - 'firmware/**'
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@v4
+    - name: Checkout Tasmota source code
+      uses: actions/checkout@v4
+      with:
+        repository: arendst/Tasmota
+        path: firmware/Tasmota/Tasmota/
+    - name: Checkout Tasmota source code
+      uses: actions/checkout@v4
+      with:
+        repository: arendst/Tasmota
+        path: firmware/Tasmota/Tasmota/
+    - name: link firmware templates
+      run: |
+        ln -s ../../user_config_override.h ./firmware/Tasmota/Tasmota/tasmota/user_config_override.h
+        ln -s ../platformio_tasmota_cenv.ini ./firmware/Tasmota/Tasmota/platformio_tasmota_cenv.ini
+    - name: Checkout esp-robonomics-client source code
+      uses: actions/checkout@v4
+      with:
+        repository: LoSk-p/esp-robonomics-client
+        path: firmware/Tasmota/Tasmota/lib/default/esp-robonomics-client
+    - name: link tasmota robonomics driver templates
+      run: |
+        ln -s ../../lib/default/esp-robonomics-client/examples/Tasmota_driver/xdrv_100_robonomics.ino firmware/Tasmota/Tasmota/tasmota/tasmota_xdrv_driver/xdrv_100_robonomics.ino
+    - name: Upload sources
+      uses: actions/upload-artifact@v4
+      with:
+        name: src_firmwares
+        path: firmware/
+        include-hidden-files: true
+  build:
+    needs: checkout
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant:
+          - em-esp32s3
+          - em-esp32c6
+          - ir-esp32
+          - ir-esp32c6
+          - sws-1g-e-esp32
+          - sws-2g-e-esp32
+          - sws-1g-e-esp32c6
+          - sws-2g-e-esp32c6
+    steps:
+    - name: Download sources
+      uses: actions/download-artifact@v4
+      with:
+        name: src_firmwares
+    - name: Setup PlatformIO
+      run: |
+        apt update && apt upgrade -y
+        pip install -U pip setuptools platformio
+    - name: Build PlatformIO project
+      run: pio run -e ${{ matrix.variant }} -d Tasmota/Tasmota/
+    - name: Upload ${{ matrix.variant }}.bin
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.variant }}.bin
+        path: ./Tasmota/Tasmota/build_output/firmware/${{ matrix.variant }}.bin
+        include-hidden-files: true
+    - name: Upload ${{ matrix.variant }}.factory.bin
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.variant }}.factory.bin
+        path: ./Tasmota/Tasmota/build_output/firmware/${{ matrix.variant }}.factory.bin
+        include-hidden-files: true
