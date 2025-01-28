@@ -50,6 +50,8 @@ jobs:
           - sws-2g-e-esp32
           - sws-1g-e-esp32c6
           - sws-2g-e-esp32c6
+          - sws-1g-e-th-esp32c6
+          - sws-2g-e-th-esp32c6
     steps:
     - name: Download sources
       uses: actions/download-artifact@v4
