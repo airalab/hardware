@@ -1,3 +1,4 @@
+[EN](./README.md) | [RU](./README.ru.md)
 
 ## Principal Scheme of the Citizen Station "Altruist"
 
