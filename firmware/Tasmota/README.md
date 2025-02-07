@@ -48,7 +48,7 @@ Use the command corresponding to your device:
 
 ---
 
-### Примечания / Notes
-- Для ESP32-C6 и ESP32-S3 используйте `--baud 921600`. Для ESP8266 — `--baud 460800`.
-- Если возникли ошибки, попробуйте снизить скорость (`--baud 115200`).
-- Для Linux/Mac замените `esptool.exe` на `python -m esptool`.
+### Notes / Notes
+- For ESP32-C6 and ESP32-S3, use `--baud 921600`. For ESP8266 use `--baud 460800`.
+- If errors occur, try lowering the speed (`--baud 115200`).
+- For Linux/Mac, replace `esptool.exe` with `python -m esptool`.
