@@ -28,6 +28,11 @@ jobs:
       with:
         repository: LoSk-p/esp-robonomics-client
         path: firmware/Tasmota/Tasmota/lib/default/esp-robonomics-client
+    - run: |
+        cd firmware/Tasmota/Tasmota/lib/default/esp-robonomics-client
+        latesttag=$(git describe --tags)
+        echo checking out ${latesttag}
+        git checkout ${latesttag}
     - name: link tasmota robonomics driver templates
       run: |
         ln -s ../../lib/default/esp-robonomics-client/examples/Tasmota_driver/xdrv_100_robonomics.ino firmware/Tasmota/Tasmota/tasmota/tasmota_xdrv_driver/xdrv_100_robonomics.ino
