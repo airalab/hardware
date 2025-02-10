@@ -1,7 +1,8 @@
 name: build tasmota firmware
-on: push
-    paths: 
-       - 'firmware/**'
+on:
+  push:
+    paths:
+      - 'firmware/**'
 jobs:
   checkout:
     runs-on: ubuntu-latest
