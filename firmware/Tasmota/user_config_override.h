@@ -701,20 +701,6 @@ disable all
 
   #endif
 
-  #ifdef FIRMWARE_ES_SDS_ESP8266
-    // This line will issue a warning during the build (yellow in 
-    // VSCode) so you see which section is used
-    #warning **** Build: ES-SDS-ESP8266 ****
-    // -- CODE_IMAGE_STR is the name shown between brackets on the 
-    //    Information page or in INFO MQTT messages
-    #undef CODE_IMAGE_STR
-    #define CODE_IMAGE_STR "ES-SDS-ESP8266"
-
-    #undef USER_TEMPLATE
-    #define USER_TEMPLATE "{\"NAME\":\"Generic\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}"  // [Template] Set JSON template
-
-  #endif
-
   #ifdef FIRMWARE_IR_ESP32
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
@@ -832,6 +818,16 @@ disable all
     #undef FALLBACK_MODULE
     #endif
     #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
+    #define USE_ENERGY_SENSOR
+
+    #define USE_BL09XX
+
+      #define BL0940_PREF 713
+      #define BL0940_UREF 17159
+      #define BL0940_IREF 266013
+
+      #define BL09XX_WRITE_COMMAND 0xA8
+      #define BL09XX_READ_COMMAND 0x58
 
     #undef DEVICE_NAME
     #define DEVICE_NAME "SWS-1G-E-ESP32C6"
@@ -864,6 +860,14 @@ disable all
     #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
 
     #define USE_ENERGY_SENSOR
+    #define USE_BL09XX
+
+      #define BL0940_PREF 713
+      #define BL0940_UREF 17159
+      #define BL0940_IREF 266013
+
+      #define BL09XX_WRITE_COMMAND 0xA8
+      #define BL09XX_READ_COMMAND 0x58
 
     #undef DEVICE_NAME
     #define DEVICE_NAME "SWS-2G-E-ESP32C6"
@@ -875,14 +879,14 @@ disable all
 
   #endif
 
-  #ifdef FIRMWARE_SWS_1G_E_TH_ESP32C6
+  #ifdef FIRMWARE_SWS_1G_ETH_ESP32C6
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
-    #warning **** Build: SWS-1G-E_TH-ESP32C6 ****
+    #warning **** Build: SWS-1G-ETH-ESP32C6 ****
     // -- CODE_IMAGE_STR is the name shown between brackets on the 
     //    Information page or in INFO MQTT messages
     #undef CODE_IMAGE_STR
-    #define CODE_IMAGE_STR "SWS-1G-E-TH-ESP32C6"
+    #define CODE_IMAGE_STR "SWS-1GE-TH-ESP32C6"
 
     #ifdef MODULE
     #undef MODULE
@@ -895,24 +899,44 @@ disable all
     #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
 
     #undef DEVICE_NAME
-    #define DEVICE_NAME "SWS-1G-E-TH-ESP32C6"
+    #define DEVICE_NAME "SWS-1G-ETH-ESP32C6"
     #undef FRIENDLY_NAME
     #define FRIENDLY_NAME "Robonomics 1 gang Switch"
 
+    #undef USE_ENHANCED_GUI_WIFI_SCAN
+    #undef USE_TIMERS_WEB
+
+    #define USE_ENERGY_SENSOR
+    #define USE_BL09XX
+
+      #define BL0940_PREF 713
+      #define BL0940_UREF 17159
+      #define BL0940_IREF 266013
+
+      #define BL09XX_WRITE_COMMAND 0xA8
+      #define BL09XX_READ_COMMAND 0x58
+
+    #define USE_I2C
+    #undef USE_WE517
+    #undef USE_SHT
+    #undef USE_VEML6070 // UV sensor with conflicting I2C address
+    #undef USE_AHT1x
+    #undef USE_AHT2x
+    #define USE_AHT2x
 
     #undef USER_TEMPLATE
     #define USER_TEMPLATE "{\"NAME\":\"Robonomics-1L-Switch\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,576,32,288,1,1,1,7552,1,3200,224,1,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
 
   #endif
 
-  #ifdef FIRMWARE_SWS_2G_E_TH_ESP32C6
+  #ifdef FIRMWARE_SWS_2G_ETH_ESP32C6
     // This line will issue a warning during the build (yellow in 
     // VSCode) so you see which section is used
-    #warning **** Build: SWS-2G-E-TH-ESP32C6 ****
+    #warning **** Build: SWS-2G-ETH-ESP32C6 ****
     // -- CODE_IMAGE_STR is the name shown between brackets on the 
     //    Information page or in INFO MQTT messages
     #undef CODE_IMAGE_STR
-    #define CODE_IMAGE_STR "SWS-2G-E-TH-ESP32C6"
+    #define CODE_IMAGE_STR "SWS-2G-ETH-ESP32C6"
 
     #ifdef MODULE
     #undef MODULE
@@ -924,15 +948,34 @@ disable all
     #endif
     #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
 
+    #undef USE_ENHANCED_GUI_WIFI_SCAN
+    #undef USE_TIMERS_WEB
+
     #define USE_ENERGY_SENSOR
+    #define USE_BL09XX
+
+      #define BL0940_PREF 713
+      #define BL0940_UREF 17159
+      #define BL0940_IREF 266013
+
+      #define BL09XX_WRITE_COMMAND 0xA8
+      #define BL09XX_READ_COMMAND 0x58
+
+    #define USE_I2C
+    #undef USE_WE517
+    #undef USE_SHT
+    #undef USE_VEML6070 // UV sensor with conflicting I2C address
+    #undef USE_AHT1x
+    #undef USE_AHT2x
+    #define USE_AHT2x
 
     #undef DEVICE_NAME
-    #define DEVICE_NAME "SWS-2G-E-TH-ESP32C6"
+    #define DEVICE_NAME "SWS-2G-ETH-ESP32C6"
     #undef FRIENDLY_NAME
     #define FRIENDLY_NAME "Robonomics 2 gang Switch"
 
     #undef USER_TEMPLATE
-    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-2L-Switch\",\"GPIO\":[1,32,1,1,1,1,288,1,1,1,1,1,576,1,289,33,1,1,7552,1,3200,224,225,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-2L-Switch\",\"GPIO\":[0,0,640,608,32,288,0,0,0,0,0,0,0,0,224,3200,5440,225,0,0,0,289,33,0,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
 
   #endif
 

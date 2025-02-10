@@ -1,8 +1,8 @@
 name: build tasmota firmware
 on:
   push:
-    paths:
-      - 'firmware/**'
+#    paths:
+#      - 'firmware/**'
 jobs:
   checkout:
     runs-on: ubuntu-latest
@@ -28,6 +28,12 @@ jobs:
       with:
         repository: LoSk-p/esp-robonomics-client
         path: firmware/Tasmota/Tasmota/lib/default/esp-robonomics-client
+    - run: |
+        cd firmware/Tasmota/Tasmota/lib/default/esp-robonomics-client
+        git fetch --tags
+        latesttag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+        echo checking out ${latesttag}
+        git checkout ${latesttag}
     - name: link tasmota robonomics driver templates
       run: |
         ln -s ../../lib/default/esp-robonomics-client/examples/Tasmota_driver/xdrv_100_robonomics.ino firmware/Tasmota/Tasmota/tasmota/tasmota_xdrv_driver/xdrv_100_robonomics.ino
@@ -51,8 +57,8 @@ jobs:
           - sws-2g-e-esp32
           - sws-1g-e-esp32c6
           - sws-2g-e-esp32c6
-          - sws-1g-e-th-esp32c6
-          - sws-2g-e-th-esp32c6
+          - sws-1g-eth-esp32c6
+          - sws-2g-eth-esp32c6
     steps:
     - name: Download sources
       uses: actions/download-artifact@v4
