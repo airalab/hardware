@@ -7,11 +7,17 @@ The following components form the basis for developing the principal scheme of e
 
 The power supply block of the device is built on the KP1505X chip series. These are high-performance and cost-effective power switches with PWM control, suitable for autonomous step-down devices of low power, with simple peripheral circuits and a small number of components. The device features a built-in high-voltage MOSFET to enhance system resilience against voltage spikes.Unlike traditional PWM controllers, the KP1505X does not have an internal fixed clock generator for MOSFET control, and the switching frequency can automatically adjust based on load changes. The chip uses multi-mode PWM control technology, which simplifies peripheral circuit design, improves linear regulation speed and load regulation speed, and eliminates audible noise during operation. Additionally, the chip's internal peak current detection threshold can automatically adjust according to actual load conditions, effectively reducing energy consumption in standby mode under no-load conditions.The KP1505X integrates a full set of protection functions with self-recovery: undervoltage protection VDD, cycle-by-cycle current limiting, output overvoltage protection, overheat protection, overload protection, VDD overvoltage protection, etc.To enhance power safety, the KP15051SPA scheme includes a 100-ohm limiting startup current resistor. The AC voltage enters through a fuse parallel to which a 07D471K varistor is installed. This scheme causes the varistor to activate if the voltage suddenly increases above 385 volts, leading to the fuse blowing and disconnecting the entire circuit from very high voltage that could cause severe damage or fire.The scheme also includes a DC-DC linear converter used to reduce power from both the USB Type-C port and the AC-DC power supply, lowering the supply voltage from 5 volts to 3.3 volts.
 
-> [!WARNING]
-> ## **Important**
->  **The power supply circuit is not isolated, so it is forbidden to touch the device when it is connected to AC power to prevent electric shock. It is also forbidden to connect the device via the Type-C port to a PC without a special isolating device, as this could damage your PC and cause electric shock.**
-> 
-> **Please study the [educational materials](https://resources.altium.com/p/isolated-vs-non-isolated-power-supplies-right-choice-without-fail) on the topic of power sources.**
+> [!WARNING]  
+> ## **Important Safety Notice**  
+> **The power circuit is not isolated**. To avoid electric shock:  
+> - **Do not touch the device** while it is connected to the AC power grid.  
+> - **Do not connect the device via USB Type-C to a computer** without a dedicated isolation device. This may damage the computer or cause electric shock.  
+>   
+> **For safe USB Type-C connection to a computer without an isolation device**:  
+> Ensure the device is **disconnected from the 220V AC power supply** before connecting.  
+>   
+> **Recommended reading**:  
+> Review the [learning materials](https://resources.altium.com/p/isolated-vs-non-isolated-power-supplies-right-choice-without-fail) on *"Isolated vs. Non-Isolated Power Supplies"* to ensure safe operation. 
 
 ## Energy Monitoring Scheme
 
