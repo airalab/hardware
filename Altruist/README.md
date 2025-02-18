@@ -1,45 +1,43 @@
+# Altruist Outdoor Sensor
 
-## Altruist Outdoor Sensor: A Solution for Decentralized Environmental Monitoring
+**Altruist** is a smart sensor that collects environmental data and combines it into a decentralized sensor map.
 
-With the Altruist Outdoor Sensor, you become a key player in decentralized environmental monitoring. This innovative device collects data on noise, dust, temperature, and radiation, encrypts it, maps it, and shares it across a distributed network. Experience the power of true DePIN (Decentralized Physical Infrastructure Network) — a revolutionary technological movement that has been thriving for years on our decentralized sensor map.
+<img src="https://github.com/airalab/hardware/blob/main/Altruist/ESP32C3/Img/3D-view-Altruist-title.png" width="500px">
 
-### Key Features of the Altruist Outdoor Sensor
+With the **Altruist** Outdoor Sensor, you become a force in decentralized environmental monitoring. Capture noise, dust, and temperature data—encrypted, mapped, and shared across a distributed network.
+Experience the power of true DePIN (Decentralized Physical Infrastructure Network) — a revolutionary technological movement brought to life and thriving for years on our [decentralized sensor map](https://sensors.social/).
 
-1. **Data Collection**:
-   - **Noise Monitoring**: The sensor can detect and measure noise levels, providing valuable insights into environmental conditions.
-   - **Dust Monitoring**: It tracks dust particles in the air, helping to assess air quality.
-   - **Temperature Monitoring**: Accurately measures temperature changes, essential for understanding local climate conditions.
-   - **Radiation Monitoring**: Uses a radiation sensor to measure radiation levels, crucial for evaluating radiation safety.
+**Hardware specification**
+- Input Voltage  AC 100-240V 50/60Hz
+- Wireless protocol: Supports 2.4GHz Wi-Fi 6 (802.11 b/g/n) and Bluetooth 5 (LE), Zigbee with onboard antenna
+- Equipped with a high-performance 32-bit RISC-V processor with clock speed up to 160 MHz, and a low-power 32-bit RISC-V processor with clock speed up to 20MHz
+- Memory: 320KB ROM, 512KB of HP SRAM, 16KB LP SRAM and 4MB Flash memory
+- USB-C for firmware development and updates
+- PM sensor: SDS011 laser PM2.5/PM10 sensor
+- Support sensors : 
+-  T&H : SHT3X,BME280,HTU21D
+- Noise Level Sensor:  I2S INMP441, ICS-43434
+- GPS: BN220-GSP
+- Geiger counter : [Radsens](https://github.com/climateguard/RadSens)
 
-2. **Decentralized Data Sharing**:
-   - **Encryption**: All data is encrypted to ensure privacy and security.
-   - **Distributed Network**: Data is shared across a decentralized network, allowing for transparent and community-driven data management.
-   - **Mapping**: Data is mapped to provide visual insights into environmental conditions across different locations.
+**Advanced Peripheral Interfaces:**
 
-3. **DePIN Technology**:
-   - **Decentralized Physical Infrastructure Network**: This technology represents a new paradigm in data collection and sharing, focused on community-driven and decentralized infrastructure.
-   - **Revolutionary Movement**: DePIN has been thriving for years, empowering communities to manage and analyze environmental data independently.
+Digital interfaces:
+* Two UART for PM sensors, GPS
+* I2C for atmospheric pressure, temperature, humidity, geiger counter, CO2, TVOC and other gas sensors
+* I2S for connecting digital microphones for noise analysis
 
----
+Built-in AC -DC 5V 0.35A power supply
+Built-in connectors :
+* HY2.0-4P : i2c for atmospheric pressure, temperature, humidity.
+* XH-4AW:  i2c for geiger counter
+* ZH-5AW: i2s for digital microphones
+* XH-5P : for SDS011 PM sensor
+* SH1.0-4PWT: UART for GPS
+* Screw Terminal Blocks : for AC connection
 
-### Benefits of Decentralized Environmental Monitoring
-
-1. **Community Engagement**: Encourages community involvement in environmental monitoring and decision-making.
-2. **Data Transparency**: Ensures data accessibility and transparency, promoting accountability and trust.
-3. **Autonomy**: Allows communities to manage their own environmental data without reliance on centralized authorities.
-
----
-
-### Integration with Other Technologies
-
-The Altruist Outdoor Sensor can be integrated with various IoT devices and blockchain technologies to enhance its capabilities. This includes:
-
-1. **Blockchain Integration**: For secure and transparent data storage and sharing.
-2. **IoT Devices**: Can be connected to other sensors and devices to create a comprehensive environmental monitoring system.
-
----
-
-### Conclusion
-
-The Altruist Outdoor Sensor is a powerful tool in the realm of decentralized environmental monitoring. By leveraging DePIN technology, it empowers communities to control their environmental data, fostering a more transparent and collaborative approach to environmental stewardship.
-
+> [!WARNING]
+> ## **Important**
+>
+> **The power supply circuit is not isolated, so it is forbidden to touch the device when connected to the AC power grid. It is also prohibited to connect the device via the Type-C port to a PC without a special isolating device to avoid damaging the PC and electrical shock.**
+> **Please study the [educational materials](https://resources.altium.com/p/isolated-vs-non-isolated-power-supplies-right-choice-without-fail) on the topic of power sources.**
