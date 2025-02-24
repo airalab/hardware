@@ -2,7 +2,7 @@
 
 **Altruist** is a smart sensor that collects environmental data and combines it into a decentralized sensor map.
 
-<img src="https://github.com/airalab/hardware/blob/main/Altruist/ESP32C3/Img/3D-view-Altruist-title.png" width="500px">
+<img src="https://github.com/airalab/hardware/blob/main/Altruist/Img/3D-view-Altruist-title.png" width="500px">
 
 With the **Altruist** Outdoor Sensor, you become a force in decentralized environmental monitoring. Capture noise, dust, and temperature data—encrypted, mapped, and shared across a distributed network.
 Experience the power of true DePIN (Decentralized Physical Infrastructure Network) — a revolutionary technological movement brought to life and thriving for years on our [decentralized sensor map](https://sensors.social/).
