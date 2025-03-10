@@ -611,6 +611,11 @@ disable all
   #undef USER_TEMPLATE
   #endif
 
+    #undef WIFI_CONFIG_TOOL
+    #define WIFI_CONFIG_TOOL       WIFI_MANAGER
+    #undef USE_ENHANCED_GUI_WIFI_SCAN
+    #undef USE_TIMERS_WEB
+
   #ifdef FIRMWARE_EM_ESP32S3
   #warning **** Build: EM-ESP32S3 ****
     #ifdef CODE_IMAGE_STR
@@ -622,11 +627,6 @@ disable all
     #define DEVICE_NAME "EM-ESP32S3"
     #undef FRIENDLY_NAME
     #define FRIENDLY_NAME "Robonomics energy monitor"
-
-    #undef WIFI_CONFIG_TOOL
-    #define WIFI_CONFIG_TOOL       WIFI_MANAGER
-    #undef USE_ENHANCED_GUI_WIFI_SCAN
-    #undef USE_TIMERS_WEB
 
     #define USE_ENERGY_SENSOR
     #define USE_BL09XX
