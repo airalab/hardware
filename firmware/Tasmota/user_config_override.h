@@ -925,8 +925,7 @@ disable all
     #define USE_AHT2x
 
     #undef USER_TEMPLATE
-    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-1L-Switch\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,576,32,288,1,1,1,7552,1,3200,224,1,5440,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
-
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-1L-Switch\",\"GPIO\":[0,288,640,608,0,0,544,32,0,0,0,0,0,0,0,5440,0,0,3200,224,7552,0,0,0,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
   #endif
 
   #ifdef FIRMWARE_SWS_2G_ETH_ESP32C6
@@ -975,8 +974,7 @@ disable all
     #define FRIENDLY_NAME "Robonomics 2 gang Switch"
 
     #undef USER_TEMPLATE
-    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-2L-Switch\",\"GPIO\":[0,0,640,608,32,288,0,0,0,0,0,0,0,0,224,3200,5440,225,0,0,0,289,33,0,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
-
+    #define USER_TEMPLATE "{\"NAME\":\"Robonomics-2L-Switch\",\"GPIO\":[0,290,640,608,32,320,544,0,0,0,0,0,0,0,225,5440,0,0,3200,224,7552,321,33,0,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
   #endif
 
 #endif  // _USER_CONFIG_OVERRIDE_H_
