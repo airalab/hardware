@@ -10,7 +10,7 @@ A dual-module smart air monitor for indoor and outdoor purposes: measure urban d
 
 The bundle contains two devices:
 
-- [Altruist Urban](Altruist Urban) — module for measuring urban dust and outdoor noise;
-- [Altruist Insight](Altruist Insight) — module that measures CO2 and displays data from both modules on the E-ink display.
+- [Altruist Urban](Altruist%20Urban) — module for measuring urban dust and outdoor noise;
+- [Altruist Insight](Altruist%20Insight) — module that measures CO2 and displays data from both modules on the E-ink display.
 
 **Campaign link**: https://www.indiegogo.com/projects/altruist-air-quality-bundle-urban-insight
