@@ -977,4 +977,41 @@ disable all
     #define USER_TEMPLATE "{\"NAME\":\"Robonomics-2L-Switch\",\"GPIO\":[0,290,640,608,32,288,544,1,1,0,0,0,0,0,225,5440,0,0,3200,224,7552,289,33,0,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
   #endif
 
+  #ifdef FIRMWARE_BS_POE_ESP32C3
+    // This line will issue a warning during the build (yellow in 
+    // VSCode) so you see which section is used
+    #warning **** Build: BS_POE_ESP32C3 ****
+    // -- CODE_IMAGE_STR is the name shown between brackets on the 
+    //    Information page or in INFO MQTT messages
+    #undef CODE_IMAGE_STR
+    #define CODE_IMAGE_STR "BS_POE_ESP32C3"
+
+    #ifdef MODULE
+    #undef MODULE
+    #endif
+    #define MODULE                 USER_MODULE   // [Module] Select default model (the list is kModuleNiceList() in file tasmota_template.h) USER_MODULE is the TEMPLATE
+
+    #ifdef FALLBACK_MODULE
+    #undef FALLBACK_MODULE
+    #endif
+    #define FALLBACK_MODULE        USER_MODULE   // to Select the default model as FALLBACK when the user does a RESET 1 
+
+    #undef USE_ENHANCED_GUI_WIFI_SCAN
+    #undef USE_TIMERS_WEB
+
+    #define USE_DS18x20
+    #define USE_ETHERNET
+    #define ETH_TYPE          8
+
+    #undef DEVICE_NAME
+    #define DEVICE_NAME "BS_POE_ESP32C3"
+    #undef FRIENDLY_NAME
+    #define FRIENDLY_NAME "Boiler Sensor ETH-POE"
+
+    #undef USER_TEMPLATE
+    #define USER_TEMPLATE "{\"NAME\":\"Boiler Sensor\",\"GPIO\":[576,5536,0,1312,704,672,736,5568,0,0,5600,0,0,0,225,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
+
+
+  #endif
+
 #endif  // _USER_CONFIG_OVERRIDE_H_
