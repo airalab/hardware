@@ -7,5 +7,4 @@ The bundle contains two devices:
 - [Altruist Urban](Urban) — module for measuring urban dust and outdoor noise;
 - [Altruist Insight](Insight) — module that measures CO2 and displays data from both modules on the E-ink display.
 
-The bundle was presented in the Indiegogo campaign in 2025:
-https://www.indiegogo.com/projects/altruist-air-quality-bundle-urban-insight
+The bundle was presented in the [Indiegogo campaign](https://www.indiegogo.com/projects/altruist-air-quality-bundle-urban-insight) in 2025.
