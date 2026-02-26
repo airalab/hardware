@@ -986,6 +986,8 @@ disable all
     #undef CODE_IMAGE_STR
     #define CODE_IMAGE_STR "BS_POE_ESP32C3"
 
+    #define OTA_URL "http://upd.sensors.robonomics.network/tasmota/bs-poe-esp32c3.bin.gz"
+
     #ifdef MODULE
     #undef MODULE
     #endif
@@ -1006,7 +1008,7 @@ disable all
     #undef DEVICE_NAME
     #define DEVICE_NAME "BS_POE_ESP32C3"
     #undef FRIENDLY_NAME
-    #define FRIENDLY_NAME "Boiler Sensor ETH-POE"
+    #define FRIENDLY_NAME "Boiler Sensor ETH-POE1"
 
     #undef USER_TEMPLATE
     #define USER_TEMPLATE "{\"NAME\":\"Boiler Sensor\",\"GPIO\":[576,5536,0,1312,704,672,736,5568,0,0,5600,0,0,0,225,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}"
