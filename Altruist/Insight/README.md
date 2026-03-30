@@ -67,15 +67,33 @@ Altruist Insight — ESP32-C6–based indoor air-quality monitor with SCD41 carb
         <th>Link to Plastic</th>
     </tr>
     <tr>
-        <th><img src="Img/Colors/blue.png" width="64" alt="Blue"></th>
-        <th>Blue</th>
-        <th>ES-ALTRUIST-INST-1-BL</th>
+        <th><img src="Img/Colors/cyan.png" width="64" alt="Cyan"></th>
+        <th>Cyan</th>
+        <th>ES-ALTRUIST-INST-1-CYAN</th>
         <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?id=54004785217884">PLA Basic - Color : Cyan (10603)</a></th>
     </tr>
     <tr>
-        <th><img src="Img/Colors/pink.png" width="64" alt="Pink"></th>
-        <th>Pink</th>
-        <th>ES-ALTRUIST-INST-1-PK</th>
+        <th><img src="Img/Colors/magenta.png" width="64" alt="Magenta"></th>
+        <th>Magenta</th>
+        <th>ES-ALTRUIST-INST-1-MGNT</th>
         <th><a href="http://eu.store.bambulab.com/products/pla-basic-filament?id=47794655068508">PLA Basic - Color : Magenta (10202)</a></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Orange</th>
+        <th>ES-ALTRUIST-INST-1-ORNG</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=42911327879387">PLA Basic - Color : Orange (10300)</a></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Jade White</th>
+        <th>ES-ALTRUIST-INST-1-JDWT</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=42911327846619">PLA Basic - Color : Jade White (10100)</a></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Black</th>
+        <th>ES-ALTRUIST-INST-1-BLCK</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=42911327846619">PLA Basic - Color : Black (10101)</a></th>
     </tr>
 </table>
