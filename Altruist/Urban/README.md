@@ -77,45 +77,59 @@ Altruist Urban — ESP32-C6–based outdoor air-quality monitor with SDS011 part
         <th>Link to Plastic</th>
     </tr>
     <tr>
-        <th><img src="Img/Colors_Icons/blue-smile.png" width="64" alt="Blue-Smile"></th>
-        <th>Blue</th>
+        <th><img src="Img/Colors_Icons/cyan-smile.png" width="64" alt="Cyan-Smile"></th>
+        <th>Cyan</th>
         <th>Smile</th>
-        <th>ES-ALTRUIST-URB-1-BL-SM</th>
+        <th>ES-ALTRUIST-URB-1-CYAN</th>
         <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?id=54004785217884">PLA Basic - Color : Cyan (10603)</a></th>
     </tr>
     <tr>
-        <th><img src="Img/Colors_Icons/blue-deadly.png" width="64" alt="Blue-Deadly"></th>
-        <th>Blue</th>
+        <th><img src="Img/Colors_Icons/magenta-deadly.png" width="64" alt="Magenta-Deadly"></th>
+        <th>Magenta</th>
         <th>Deadly</th>
-        <th>ES-ALTRUIST-URB-1-BL-DD</th>
-        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?id=54004785217884">PLA Basic - Color : Cyan (10603)</a></th>
+        <th>ES-ALTRUIST-URB-1-MGNT</th>
+        <th><a href="http://eu.store.bambulab.com/products/pla-basic-filament?id=47794655068508">PLA Basic - Color : Magenta (10202)</a></th>
     </tr>
     <tr>
-        <th><img src="Img/Colors_Icons/blue-enjoy.png" width="64" alt="Blue-Enjoy"></th>
-        <th>Blue</th>
+        <th></th>
+        <th>Orange</th>
         <th>Enjoy</th>
-        <th>ES-ALTRUIST-URB-1-BL-EJ</th>
-        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?id=54004785217884">PLA Basic - Color : Cyan (10603)</a></th>
+        <th>ES-ALTRUIST-URB-1-ORNG</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=42911327879387">PLA Basic - Color : Orange (10300)</a></th>
     </tr>
     <tr>
-        <th><img src="Img/Colors_Icons/pink-smile.png" width="64" alt="Pink-Smile"></th>
-        <th>Pink</th>
+        <th></th>
+        <th>Jade White</th>
         <th>Smile</th>
-        <th>ES-ALTRUIST-URB-1-PK-SM</th>
-        <th><a href="http://eu.store.bambulab.com/products/pla-basic-filament?id=47794655068508">PLA Basic - Color : Magenta (10202)</a></th>
+        <th>ES-ALTRUIST-URB-1-JDWT</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=42911327846619">PLA Basic - Color : Jade White (10100)</a></th>
     </tr>
     <tr>
-        <th><img src="Img/Colors_Icons/pink-deadly.png" width="64" alt="Pink-Deadly"></th>
-        <th>Pink</th>
-        <th>Deadly</th>
-        <th>ES-ALTRUIST-URB-1-PK-DD</th>
-        <th><a href="http://eu.store.bambulab.com/products/pla-basic-filament?id=47794655068508">PLA Basic - Color : Magenta (10202)</a></th>
+        <th></th>
+        <th>Black</th>
+        <th>Smile</th>
+        <th>ES-ALTRUIST-URB-1-BLCK</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=42911327846619">PLA Basic - Color : Black (10101)</a></th>
     </tr>
     <tr>
-        <th><img src="Img/Colors_Icons/pink-enjoy.png" width="64" alt="Pink-Enjoy"></th>
-        <th>Pink</th>
+        <th></th>
+        <th>Bambu Green</th>
         <th>Enjoy</th>
-        <th>ES-ALTRUIST-URB-1-PK-EJ</th>
-        <th><a href="http://eu.store.bambulab.com/products/pla-basic-filament?id=47794655068508">PLA Basic - Color : Magenta (10202)</a></th>
+        <th>ES-ALTRUIST-URB-1-BAGR</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=47794655461724">PLA Basic - Color : Bambu Green (10501)</a></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Bright Green</th>
+        <th>Deadly</th>
+        <th>ES-ALTRUIST-URB-1-BRGR</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=49636024353116">PLA Basic - Color : Bright Green (10503)</a></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Mistletoe Green</th>
+        <th>Smile</th>
+        <th>ES-ALTRUIST-URB-1-MSGR</th>
+        <th><a href="https://eu.store.bambulab.com/products/pla-basic-filament?t=1773913736103&id=47794656477532">PLA Basic - Color : Mistletoe Green (10502)</a></th>
     </tr>
 </table>
