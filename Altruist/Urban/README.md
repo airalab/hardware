@@ -39,7 +39,7 @@ Altruist Urban — ESP32-C6–based outdoor air-quality monitor with SDS011 part
 - **Dimensions & Weight:**
     - 125 x 49 x 164 mm, 214 g
 - **Operation Temperature and Humidity:**
-    - –25°C … +50°C
+    - –30°C … +45°C
     - 10 … 90% RH
 
 ## Sensors Specification
