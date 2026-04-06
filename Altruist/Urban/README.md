@@ -34,7 +34,6 @@ Altruist Urban — ESP32-C6–based outdoor air-quality monitor with SDS011 part
 - **Device Housing Material:**
     - 3D-printed case from [PLA plastic](Certificates/Plastic%20for%203D-printing)
 - **Installation:**
-    - Standing
     - Wall mount
 - **Dimensions & Weight:**
     - 125 x 49 x 164 mm, 214 g
