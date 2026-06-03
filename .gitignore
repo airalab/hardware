@@ -1,2 +1,3 @@
 firmware/Tasmota/Tasmota/
 .platformio
+*.FCBak
