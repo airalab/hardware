@@ -6,15 +6,15 @@ STL files for 3D-printing the Altruist Insight enclosure. Printed in PLA plastic
 
 | File | Description |
 |------|-------------|
-| Front.stl | Front panel of the enclosure |
-| Back.stl | Back panel of the enclosure |
-| Stand.stl | Standing base for desktop placement |
-| Bumper.stl | Protective bumper |
-| Clear_plastic_bumper.stl | Transparent bumper variant |
-| clear_plastic_usb.stl | Transparent USB port cover |
-| Buttom(SET).stl | SET button cap |
-| Buttom(UP-DOWN).stl | UP/DOWN button cap |
-| Bolt.stl | Fastening bolt |
+| Front_Part.stl | Front panel of the enclosure |
+| Back_Part.stl | Back panel of the enclosure |
+| Plastic_Leg.stl | Standing base for desktop placement |
+| Bumper_Part.stl | Protective bumper |
+| Clear_Bumper_Part.stl | Transparent bumper variant |
+| Clear_USB_Port_Cover.stl | Transparent USB port cover |
+| Button_Set.stl | SET button cap |
+| Button_Up_Down.stl | UP/DOWN button cap |
+| Screw.stl | Fastening screw |
 
 ## Printing
 
