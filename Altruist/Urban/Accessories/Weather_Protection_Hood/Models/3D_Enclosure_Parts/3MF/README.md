@@ -1,0 +1,3 @@
+# Altruist Urban Weather Protection Hood
+
+Protective cover for the Altruist Urban outdoor air quality monitor, designed to shield the device from rain, UV radiation, and extreme weather. Printed in UV-resistant ASA plastic for outdoor durability — withstands temperatures up to +90°C and 0–100% RH. The model consists of three parts: the hood (Hat_Part), wall mount bracket, and fastening bolt. Available in Blue, Cyan (Green), and Red using Bambu ASA filament. Designed specifically for the wall-mounted Altruist Urban (ES-ALTRUIST-URB-1). Open source under GPLv3 — FreeCAD source files included.
