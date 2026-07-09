@@ -1,3 +1,4 @@
 firmware/Tasmota/Tasmota/
 .platformio
 *.FCBak
+.DS_Store
