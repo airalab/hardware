@@ -1,0 +1,19 @@
+[Unit]
+Description=Meshtastic to MQTT Bridge
+After=network.target mosquitto.service meshtasticd.service
+Requires=mosquitto.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu
+Environment="PATH=/home/ubuntu/mesh-venv/bin:/usr/bin"
+ExecStart=/home/ubuntu/mesh-venv/bin/python3 /home/ubuntu/meshtastic-altruist-bridge/scripts/journal_to_mqtt.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

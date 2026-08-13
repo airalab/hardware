@@ -1,0 +1,24 @@
+# MeshAdv-Pi-Hat E22-900M30S на Raspberry Pi 4B
+# https://github.com/chrismyers2000/MeshAdv-Pi-Hat
+
+Lora:
+  Module: sx1262
+  CS: 21
+  IRQ: 16
+  Busy: 20
+  Reset: 18
+  TXen: 13
+  RXen: 12
+  DIO3_TCXO_VOLTAGE: true
+
+Webserver:
+  Port: 80
+
+# Примечание: HTTPS не настроен из-за отсутствия SSL сертификатов
+# Для продакшена добавить:
+# Webserver:
+#   Port: 443
+#   RootPath: /var/www/meshtastic
+# SSL:
+#   Key: /etc/mesquitto/ssl/key.pem
+#   Cert: /etc/mesquitto/ssl/cert.pem
