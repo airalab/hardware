@@ -1,4 +1,2 @@
-firmware/Tasmota/Tasmota/
-.platformio
-*.FCBak
-.DS_Store
+__pycache__/
+*.pyc

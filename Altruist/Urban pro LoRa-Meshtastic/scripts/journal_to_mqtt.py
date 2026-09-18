@@ -148,7 +148,7 @@ def main():
             data = parse_log_line(line)
             if data:
                 packet_count += 1
-                node_id = data["source"].lstrip("0x")
+                node_id = data["source"].removeprefix("0x")
                 topic = "%s/%s/text" % (MQTT_ROOT, node_id)
                 payload = json.dumps(data, ensure_ascii=False)
                 

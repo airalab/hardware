@@ -4,8 +4,8 @@
 
 | Pin | Назначение | Примечание |
 |-----|-----------|------------|
-| TXD0 | UART TX | GPIO17 (ESP32-C6) |
-| RXD0 | UART RX | GPIO16 (ESP32-C6) |
+| IO22 | UART TX | Выход данных сенсора → Heltec GPIO 48 (RXD) |
+| IO20 | UART RX | Вход ← Heltec GPIO 47 (TXD) |
 | GND | Земля | |
 | 3.3V | Питание | Heltec может питать Altruist через 3.3V |
 
@@ -13,8 +13,8 @@
 
 | GPIO | Функция | Default | Использование |
 |------|---------|---------|---------------|
-| 47 | UART RX (Serial2) | | Приём от Altruist TXD0 |
-| 48 | UART TX (Serial2) | | Отправка на Altruist RXD0 |
+| 48 | UART RX (Serial2) | | Приём от Altruist IO22 |
+| 47 | UART TX (Serial2) | | Отправка на Altruist IO20 |
 | 18 | LoRa RESET | | |
 | 14 | LoRa DIO1 (IRQ) | | |
 | 26 | LoRa CS | | |
@@ -31,12 +31,15 @@
 | 19 | GPIO 10 | SPI MOSI | MOSI |
 | 21 | GPIO 9 | SPI MISO | MISO |
 | 23 | GPIO 11 | SPI SCK | SCK |
-| 24 | GPIO 8 (alt) | SPI CS0 | NSS |
+| 24 | GPIO 8 (alt) | SPI CS0 (не используется) | NSS |
 | 36 | GPIO 16 | IRQ | DIO1 |
 | 38 | GPIO 20 | Busy | BUSY |
-| 40 | GPIO 21 | Reset | RST |
-| 29 | GPIO 5 | TX Enable | TXEN |
-| 31 | GPIO 6 | RX Enable | RXEN |
+| 40 | GPIO 21 | CS (SPI) | NSS |
+| 12 | GPIO 18 | Reset | RST |
+| 33 | GPIO 13 | TX Enable | TXEN |
+| 31 | GPIO 12 | RX Enable | RXEN |
+
+⚠️ **Важно**: Reset SX1262 — **GPIO 18** (физический пин 12), а не пин 24 (там SPI CS0).
 
 ⚠️ **Важно**: MeshAdv-Pi-Hat использует **не стандартные** GPIO для CS/IRQ/Reset. Точная распиновка указана в `config/meshtasticd.yaml`:
 
@@ -57,8 +60,8 @@ Lora:
 ```
 Altruist Urban          Heltec V4
 ┌──────────┐            ┌──────────┐
-│ TXD0     │───────────>│ GPIO 48  │ (Serial RX)
-│ RXD0     │<───────────│ GPIO 47  │ (Serial TX)
+│ IO22     │───────────>│ GPIO 48  │ (Serial RX)
+│ IO20     │<───────────│ GPIO 47  │ (Serial TX)
 │ GND      │────────────│ GND      │
 │ 3.3V     │────────────│ 3.3V     │ (опционально)
 └──────────┘            └──────────┘

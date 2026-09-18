@@ -4,9 +4,6 @@
 
 A testbed for transmitting air quality sensor data from **Altruist Urban** (ESP32-C6) through **Heltec HTIT-WB32LA V4** via LoRa/Meshtastic to a **Raspberry Pi 4B + MeshAdv-Pi-Hat (E22-900M30S)** gateway node.
 
-**🇷🇺 Русский** | **[Русская версия](README.ru.md)** — Полная документация на русском языке  
-**🇬🇧 English** | **[English version](README.en.md)** — Full documentation in English
-
 ---
 
 ## Quick Start
@@ -31,7 +28,8 @@ meshtastic-altruist-bridge/
 │   └── altruist-heltec-wiring.jpg  # Wiring diagram photo
 ├── docs/
 │   ├── HARDWARE.md           # Hardware specifications
-│   └── SOFTWARE.md           # Software setup guide
+│   ├── SOFTWARE.md           # Software setup guide
+│   └── UART_CH340.md         # Controlling a Meshtastic board via CH340 USB-UART
 ├── scripts/
 │   └── journal_to_mqtt.py   # Python bridge (journalctl → MQTT)
 └── config/

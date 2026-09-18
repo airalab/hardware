@@ -36,18 +36,19 @@ A testbed for transmitting air quality sensor data from **Altruist Urban** (ESP3
 
 ### Altruist Urban → Heltec (UART)
 
-| Altruist Urban | → | Heltec GPIO | Notes |
+| Altruist Urban | Direction | Heltec GPIO | Notes |
 |----------------|---|---|-------|
-| TXD0 | → | GPIO 48 | Receiving data from Altruist |
-| RXD0 | → | GPIO 47 | Transmitting to Altruist (unused) |
-| GND | → | GND | Common ground required |
+| IO22 (TXD) | → | GPIO 48 (RXD) | Sensor data → Heltec |
+| IO20 (RXD) | ← | GPIO 47 (TXD) | Heltec → sensor (reverse channel) |
+| GND | — | GND | Common ground required |
 
 ![Altruist Urban → Heltec Wiring Diagram](images/altruist-heltec-wiring.jpg)
 
 *Wiring diagram: Altruist Urban (Robonomics) → Heltec HTIT-WB32LA V4*  
-*Red = GND, Yellow = TXD0→GPIO48, Green = RXD0→GPIO47, Brown = 3.3V*
+*Red = GND, Yellow = IO22→GPIO48, Green = GPIO47→IO20, Brown = 3.3V*
 
-⚠️ **Important**: Altruist Urban sends data at 115200 baud in continuous packets. Common GND is mandatory.
+⚠️ **Important**: Altruist Urban sends data at 115200 baud. Common GND is mandatory.
+Note: IO22/IO20 are pins on the Altruist Urban side; on the Heltec, GPIO 48 (receive) and GPIO 47 (transmit) are used.
 
 ### MeshAdv-Pi-Hat → Raspberry Pi 4B (GPIO)
 
@@ -106,9 +107,15 @@ sudo systemctl enable --now meshtasticd
 meshtastic --host localhost --info
 ```
 
-### 2. Region Setup (EU_868)
+### 2. Region Setup
+
+The region depends on the network the node operates in:
 
 ```bash
+# Russia / RU region
+meshtastic --host localhost --set lora.region RU
+
+# Europe / 868 MHz
 meshtastic --host localhost --set lora.region EU_868
 ```
 
@@ -120,20 +127,18 @@ meshtastic --port /dev/ttyACM0 --info
 
 # Configure Serial Module to receive data from Altruist
 meshtastic --port /dev/ttyACM0 --set serial.enabled true
-meshtastic --port /dev/ttyACM0 --set serial.mode 2        # TEXTMSG
-meshtastic --port /dev/ttyACM0 --set serial.rxd 48         # Receive from Altruist TXD0
-meshtastic --port /dev/ttyACM0 --set serial.txd 47         # Transmit to Altruist RXD0
-meshtastic --port /dev/ttyACM0 --set serial.baud 11        # 115200 (enum value!)
+meshtastic --port /dev/ttyACM0 --set serial.mode TEXTMSG   # text mode (enum: TEXTMSG = 3; value 2 = PROTO!)
+meshtastic --port /dev/ttyACM0 --set serial.rxd 48         # Receive from Altruist IO22
+meshtastic --port /dev/ttyACM0 --set serial.txd 47         # Transmit to Altruist IO20
+meshtastic --port /dev/ttyACM0 --set serial.baud BAUD_115200
 meshtastic --port /dev/ttyACM0 --set serial.timeout 1      # 1 second silence = transmit
 meshtastic --port /dev/ttyACM0 --set serial.echo true
 ```
 
-⚠️ **Critical**: `baud` uses **enum values**, not numeric:
-- `0` = Default
-- `1` = 110
-- `2` = 300
-- ...
-- `11` = **115200** ← this is needed
+⚠️ **Critical**: `serial.mode` and `serial.baud` take **enum names**, not numbers.
+The CLI accepts names directly; a number only sets the enum index, which is easy to mix up:
+- `serial.mode`: `DEFAULT` = 0, `SIMPLE` = 1, `PROTO` = 2, **`TEXTMSG` = 3**, `NMEA` = 4
+- `serial.baud`: the bitrate is set by name — **`BAUD_115200`** (plain `115200` is outside the enum range and will be rejected)
 
 ### 4. Link Verification
 
@@ -170,7 +175,25 @@ Received text msg from=0xb29f9cfc, msg=TEST
 
 ### Data Format from Altruist Urban
 
-Data arrives via UART every 30–60 seconds as text strings:
+Data arrives via UART every 30–60 seconds. Current firmware sends **JSON** (delivered into
+Meshtastic as a text message on the primary channel):
+
+```json
+{"id":"4DsxFHkjmofsEphBRYXodAW8NmQXmmX5cC3tj428AGnCa9WL","ts":1789649752,"p1":4.9,"p2":3.8,"t":23.8,"h":43.4,"p":100456,"n":49,"nm":67,"s":"X8I2V3Z/yjNo4vHf7QTqYUvKXGnZ4ANFYu5zcaavpsjtCHAjTIHED2yBPC/ymJIlyFyzIIrPGEYKqJfxNC/jCA=="}
+```
+
+| Field | Type | Meaning |
+|-------|------|---------|
+| `id` | base58, 44 chars | Packet ID (32 bytes) |
+| `ts` | unix time | Timestamp (seconds) |
+| `p1` / `p2` | µg/m³ | PM2.5 / PM10 |
+| `t` / `h` | °C / % | Temperature / humidity |
+| `p` | Pa | Barometric pressure |
+| `n` / `nm` | dB | Noise metrics (ICS-43434 microphone) |
+| `s` | base64, 64 bytes | Packet signature |
+
+<details>
+<summary>Legacy format (pre-update firmware): hex strings with `##`</summary>
 
 ```
 6a21dd03b0b2cabe61c0bc4c6033f7cfbe95d1128bea863d844837a83c46a6de...##
@@ -181,6 +204,28 @@ Data arrives via UART every 30–60 seconds as text strings:
 - **Hex strings** ending with `##` — signatures/hashes (SDS011/BME280 packets)
 - **Text labels** like `[extractRuntimeVersions]` — runtime logs
 - **Binary characters** (`▒`) may appear in the stream
+
+</details>
+
+### City Mesh Retransmission
+
+To forward sensor data into the city mesh, **channel 1 ("city network")** was added on the
+Heltec: the primary channel (index 0) receives the sensor JSON over UART, and channel 1
+retransmits this data into the city mesh. List configured channels:
+
+```bash
+meshtastic --port /dev/ttyACM0 --ch-set all all --ch-index 0
+```
+
+Adding a new channel and setting its name:
+
+```bash
+meshtastic --port /dev/ttyACM0 --ch-add city
+meshtastic --port /dev/ttyACM0 --ch-set name city --ch-index 1
+```
+
+> Note: there are no `--channels` or `--ch-name` flags in the CLI (verified on 2.7.11) —
+> a channel name is set via `--ch-set name <name> --ch-index N`.
 
 ### Bidirectional Communication
 
@@ -255,7 +300,7 @@ Script listens to `journalctl -u meshtasticd`, parses lines `Received text msg f
 | Heltec reboots during setup | NVS write takes time | Wait 5 sec between commands |
 | Web UI empty/crashes | meshtasticd Web UI V2.6.7 unstable | Use `journalctl` or Python API |
 | meshtasticd MQTT not working | PORTDUINO firmware limitation | Use Python bridge |
-| Heltec mode resets to PROTO | Serial mode=4 (NMEA) default | Force set `mode=2` |
+| Heltec mode resets to PROTO | After re-flash/factory reset serial.mode falls back to `DEFAULT` (0) | Check `--get serial.mode`; the text bridge needs `TEXTMSG` (3), not `PROTO` (2) |
 
 ---
 
@@ -271,3 +316,9 @@ Script listens to `journalctl -u meshtasticd`, parses lines `Received text msg f
 ## License
 
 MIT / Public Domain. Open Source project based on Meshtastic (GPL).
+
+---
+
+## See Also
+
+- [docs/UART_CH340.md](docs/UART_CH340.md) — controlling a Meshtastic board (EByte EoRa-S3) over UART via a CH340 adapter without a USB port: wiring, diagnostics, full CLI access.

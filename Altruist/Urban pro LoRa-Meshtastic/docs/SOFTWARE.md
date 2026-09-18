@@ -70,9 +70,11 @@ sudo journalctl -u meshtasticd -f
 ### Настройка региона и параметров
 
 ```bash
-# Устанавливаем регион EU_868
 source ~/mesh-venv/bin/activate
-meshtastic --host localhost --set lora.region EU_868
+
+# Устанавливаем регион (зависит от сети: RU для России, EU_868 для Европы)
+meshtastic --host localhost --set lora.region RU
+# meshtastic --host localhost --set lora.region EU_868
 
 # Проверка частоты
 meshtastic --host localhost --info
@@ -128,14 +130,15 @@ meshtastic --port /dev/ttyACM0 --get serial
 meshtastic --port /dev/ttyACM0 --set serial.enabled true
 
 # Режим TEXTMSG (отправляем как текстовые сообщения)
-meshtastic --port /dev/ttyACM0 --set serial.mode 2
+# ВАЖНО: enum-имя! TEXTMSG = 3; число 2 — это PROTO (не перепутайте)
+meshtastic --port /dev/ttyACM0 --set serial.mode TEXTMSG
 
-# Пины UART (Altruist TXD0 → Heltec GPIO48)
+# Пины UART (Altruist IO22 → Heltec GPIO48; Heltec GPIO47 → Altruist IO20)
 meshtastic --port /dev/ttyACM0 --set serial.rxd 48
 meshtastic --port /dev/ttyACM0 --set serial.txd 47
 
-# Скорость 115200 (enum value 11!)
-meshtastic --port /dev/ttyACM0 --set serial.baud 11
+# Скорость 115200 (enum-имя BAUD_115200)
+meshtastic --port /dev/ttyACM0 --set serial.baud BAUD_115200
 
 # Таймаут 1 секунда (важно!)
 meshtastic --port /dev/ttyACM0 --set serial.timeout 1

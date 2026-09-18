@@ -34,18 +34,19 @@
 
 ### Altruist Urban → Heltec (UART)
 
-| Altruist Urban | → | Heltec GPIO | Примечание |
+| Altruist Urban | Направление | Heltec GPIO | Примечание |
 |----------------|---|---|-------------|
-| TXD0 | → | GPIO 48 | Приём данных от Altruist |
-| RXD0 | → | GPIO 47 | Отправка на Altruist (не используется) |
-| GND | → | GND | Общая земля обязательна |
+| IO22 (TXD) | → | GPIO 48 (RXD) | Данные сенсора → Heltec |
+| IO20 (RXD) | ← | GPIO 47 (TXD) | Heltec → сенсор (встречный канал) |
+| GND | — | GND | Общая земля обязательна |
 
 ![Altruist Urban → Heltec Wiring Diagram](images/altruist-heltec-wiring.jpg)
 
 *Схема подключения: Altruist Urban (Robonomics) → Heltec HTIT-WB32LA V4*  
-*Красный = GND, Жёлтый = TXD0→GPIO48, Зелёный = RXD0→GPIO47, Коричневый = 3.3V*
+*Красный = GND, Жёлтый = IO22→GPIO48, Зелёный = GPIO47→IO20, Коричневый = 3.3V*
 
-⚠️ **Важно**: Altruist Urban шлёт данные на 115200 baud непрерывными пакетами. Необходим общий GND.
+⚠️ **Важно**: Altruist Urban шлёт данные на 115200 baud. Необходим общий GND.
+Обратите внимание: IO22/IO20 — пины именно со стороны Altruist Urban; на Heltec используются GPIO 48 (приём) и GPIO 47 (передача).
 
 ### MeshAdv-Pi-Hat → Raspberry Pi 4B (GPIO)
 
@@ -104,9 +105,15 @@ sudo systemctl enable --now meshtasticd
 meshtastic --host localhost --info
 ```
 
-### 2. Настройка региона (EU_868)
+### 2. Настройка региона
+
+Регион зависит от сети, в которой работает узел:
 
 ```bash
+# Россия / RU-регион
+meshtastic --host localhost --set lora.region RU
+
+# Европа / 868 МГц
 meshtastic --host localhost --set lora.region EU_868
 ```
 
@@ -118,20 +125,18 @@ meshtastic --port /dev/ttyACM0 --info
 
 # Настройка Serial Module для приёма данных от Altruist
 meshtastic --port /dev/ttyACM0 --set serial.enabled true
-meshtastic --port /dev/ttyACM0 --set serial.mode 2        # TEXTMSG
-meshtastic --port /dev/ttyACM0 --set serial.rxd 48         # Приём от Altruist TXD0
-meshtastic --port /dev/ttyACM0 --set serial.txd 47         # Отправка на Altruist RXD0
-meshtastic --port /dev/ttyACM0 --set serial.baud 11        # 115200 (enum value!)
+meshtastic --port /dev/ttyACM0 --set serial.mode TEXTMSG   # текстовый режим (enum: TEXTMSG = 3; значение 2 = PROTO!)
+meshtastic --port /dev/ttyACM0 --set serial.rxd 48         # Приём от Altruist IO22
+meshtastic --port /dev/ttyACM0 --set serial.txd 47         # Отправка на Altruist IO20
+meshtastic --port /dev/ttyACM0 --set serial.baud BAUD_115200
 meshtastic --port /dev/ttyACM0 --set serial.timeout 1      # 1 сек тишины = отправка
 meshtastic --port /dev/ttyACM0 --set serial.echo true
 ```
 
-⚠️ **Критически важно**: `baud` использует **enum-значения**, не числовые:
-- `0` = Default
-- `1` = 110
-- `2` = 300
-- ...
-- `11` = **115200** ← нужно это
+⚠️ **Критически важно**: значения `serial.mode` и `serial.baud` — это **enum-имена**, а не числа.
+CLI принимает имена напрямую; числом можно задать только индекс enum, и его легко перепутать:
+- `serial.mode`: `DEFAULT` = 0, `SIMPLE` = 1, `PROTO` = 2, **`TEXTMSG` = 3**, `NMEA` = 4
+- `serial.baud`: числовое значение скорости задаётся именем — **`BAUD_115200`** (просто `115200` вне диапазона enum и будет отвергнуто)
 
 ### 4. Проверка связи
 
@@ -168,7 +173,25 @@ Received text msg from=0xb29f9cfc, msg=TEST
 
 ### Формат данных от Altruist Urban
 
-Данные поступают через UART каждые 30–60 секунд в виде текстовых строк:
+Данные поступают через UART каждые 30–60 секунд. Актуальная прошивка шлёт **JSON** (попадает
+в Meshtastic как текстовое сообщение в primary-канал):
+
+```json
+{"id":"4DsxFHkjmofsEphBRYXodAW8NmQXmmX5cC3tj428AGnCa9WL","ts":1789649752,"p1":4.9,"p2":3.8,"t":23.8,"h":43.4,"p":100456,"n":49,"nm":67,"s":"X8I2V3Z/yjNo4vHf7QTqYUvKXGnZ4ANFYu5zcaavpsjtCHAjTIHED2yBPC/ymJIlyFyzIIrPGEYKqJfxNC/jCA=="}
+```
+
+| Поле | Тип | Значение |
+|------|-----|----------|
+| `id` | base58, 44 симв. | Идентификатор пакета (32 байта) |
+| `ts` | unix time | Метка времени (сек) |
+| `p1` / `p2` | мкг/м³ | PM2.5 / PM10 |
+| `t` / `h` | °C / % | Температура / влажность |
+| `p` | Па | Атмосферное давление |
+| `n` / `nm` | дБ | Шумовые метрики (микрофон ICS-43434) |
+| `s` | base64, 64 байта | Подпись пакета |
+
+<details>
+<summary>Старый формат (прошивка до обновления): хекс-строки с `##`</summary>
 
 ```
 6a21dd03b0b2cabe61c0bc4c6033f7cfbe95d1128bea863d844837a83c46a6de...##
@@ -179,6 +202,28 @@ Received text msg from=0xb29f9cfc, msg=TEST
 - **Хекс-строки** с `##` на конце — подписи/хеши (SDS011/BME280 пакеты)
 - **Текстовые метки** вида `[extractRuntimeVersions]` — runtime-логи
 - **Бинарные символы** (`▒`) иногда присутствуют в потоке
+
+</details>
+
+### Ретрансляция городской mesh-сетью
+
+Для передачи данных сенсора в городскую сеть на Heltec добавлен **канал 1 «городской сети»**:
+primary-канал (индекс 0) принимает JSON сенсора по UART, а канал 1 ретранслирует эти данные
+в городскую mesh-сеть. Просмотр настроенных каналов:
+
+```bash
+meshtastic --port /dev/ttyACM0 --ch-set all all --ch-index 0
+```
+
+Добавление нового канала и задание имени:
+
+```bash
+meshtastic --port /dev/ttyACM0 --ch-add city
+meshtastic --port /dev/ttyACM0 --ch-set name city --ch-index 1
+```
+
+> Внимание: флагов `--channels` и `--ch-name` в CLI нет (проверено на 2.7.11) —
+> имя канала задаётся через `--ch-set name <имя> --ch-index N`.
 
 ### Двусторонняя связь
 
@@ -253,7 +298,7 @@ pip install paho-mqtt
 | Heltec перезагружается при настройке | Запись в NVS занимает время | Ждать 5 сек между командами |
 | Web UI пустой/крашится | meshtasticd Web UI V2.6.7 нестабилен | Использовать `journalctl` или Python API |
 | meshtasticd MQTT не работает | PORTDUINO firmware limitation | Использовать Python bridge |
-| Heltec mode сбрасывается на PROTO | Serial mode=4 (NMEA) по умолчанию | Принудительно установить `mode=2` |
+| Heltec mode сбрасывается на PROTO | После перепрошивки/сброса serial.mode возвращается в `DEFAULT` (0) | Проверять `--get serial.mode`; для текстового моста нужен `TEXTMSG` (3), а не `PROTO` (2) |
 
 ---
 
@@ -269,3 +314,9 @@ pip install paho-mqtt
 ## Лицензия
 
 MIT / Public Domain. Open Source проект на базе Meshtastic (GPL).
+
+---
+
+## См. также
+
+- [docs/UART_CH340.md](docs/UART_CH340.md) — управление Meshtastic-платой (EByte EoRa-S3) по UART через адаптер CH340 без USB-разъёма: распайка, диагностика, полный CLI-доступ.
