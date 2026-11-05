@@ -22,11 +22,16 @@ This repository describes Hardware for Cyberpunks — a line of devices featurin
 
 ## Licence
 
-The original design files in this repository — schematics, PCB layouts, EDA projects, bills of materials,
-3D models and enclosures, and the documentation written for these devices — are released under the
+The schematics, PCB layouts, EDA projects, bills of materials and board 3D models of **Altruist Urban** and
+**Altruist Insight** — everything their authors made in `Altruist/Urban/` and `Altruist/Insight/` — are released
+under the [CERN Open Hardware Licence Version 2 – Weakly Reciprocal](LICENSES/CERN-OHL-W-2.0.txt)
+(CERN-OHL-W-2.0), the same licence as the board projects on OSHWLab.
+
+All other original design files in this repository — the other devices, the enclosures and accessories in
+`3D Models/`, and the documentation written for them — are released under the
 [GNU General Public License v3.0](LICENSE).
 
-The licence does not cover files written by other parties, which are kept here only for reference:
+Neither licence covers files written by other parties, which are kept here only for reference:
 
 - **Datasheets** in `*/Docs/Datasheets/` — the copyright of their manufacturers (for example Espressif,
   Bosch Sensortec, TDK InvenSense, Nova Fitness) and of the makers of the printing plastics.
@@ -37,4 +42,4 @@ The licence does not cover files written by other parties, which are kept here o
   legal statements about the devices as they are made by us: they may not be modified, and they do not apply
   to modified or third-party builds.
 
-Product names and logos (such as Altruist) are not licensed under the GPL.
+Product names and logos (such as Altruist) are not licensed under either licence.
